@@ -400,7 +400,7 @@ class Request(dict):
             # must be python <2.5
             query = base_url[4]
         query = parse_qs(query)
-        for k, v in self.items():
+        for k, v in self.get_nonoauth_parameters():
             query.setdefault(k, []).append(v)
         
         try:

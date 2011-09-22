@@ -651,7 +651,9 @@ class Client(httplib2.Http):
 
         realm = schema + ':' + hierpart + host
 
-        if is_form_encoded:
+        # if we set body whenever if_form_encoded is true, twitter will fail
+        # if we never set body, tumblr will fail
+        if is_form_encoded and 'TUMBLR_HACK' == body:
             body = req.to_postdata()
         elif method == "GET":
             uri = req.to_url()

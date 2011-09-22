@@ -652,8 +652,7 @@ class Client(httplib2.Http):
         realm = schema + ':' + hierpart + host
 
         if is_form_encoded:
-            # body = req.to_postdata()
-            pass
+            body = req.to_postdata()
         elif method == "GET":
             uri = req.to_url()
 
